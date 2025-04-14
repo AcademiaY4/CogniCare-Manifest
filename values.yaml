@@ -24,6 +24,18 @@ ingress:
               name: cognicare-gateway-service
               port:
                 number: 8349
+    
+    - host: grafana.cognicare.dementiaguard.live
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana
+                port:
+                  number: 80
+
 
 managedCertificate:
   enabled: false  # Set to true to create the ManagedCertificate
