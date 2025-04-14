@@ -94,7 +94,7 @@ argocdIngress:
   hosts:
     - host: argocd.cognicare.dementiaguard.live
       paths:
-        - path: /app/argocd/
+        - path: /
           pathType: Prefix
           backend:
             service:
