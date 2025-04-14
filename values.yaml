@@ -99,3 +99,8 @@ argocdIngress:
               name: argocd-server
               port:
                 number: 80
+
+managedCertificate:
+  enabled: false  # Set to true to create the ManagedCertificate
+  namespace: cognicare  # Namespace where the ManagedCertificate will be created
+  domain: cognicare.dementiaguard.live
