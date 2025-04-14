@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: asia-southeast1-docker.pkg.dev/ctse-micro/gateway-service/gateway-service
-  tag: 5ae44e3c970948003cdbafad39d762805ed76974
+  tag: df22d5b2fd16ef8f8ffe09a7aeb4b2d1dbe9c2d6
   pullPolicy: Always
 
 service:
