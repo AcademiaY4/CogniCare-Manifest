@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: asia-southeast1-docker.pkg.dev/ctse-micro/treatment-planning-service/treatment-planning-service
-  tag: 3b30c9a4291b27c684927fa64e6f29a6e85328a6
+  tag: bb494f1a440883df42095329662d71edbdd3e044
   pullPolicy: Always
 
 service:
