@@ -71,7 +71,7 @@ grafanaIngress:
   hosts:
     - host: grafana.cognicare.dementiaguard.live
       paths:
-        - path: /app/grafana/
+        - path: /
           pathType: Prefix
           backend:
             service:
