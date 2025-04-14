@@ -88,7 +88,7 @@ ingress:
           pathType: Prefix
           backend:
             service:
-              name: grafana
+              name: grafana.monitoring.svc.cluster.local
               port:
                 number: 80
     - host: "argocd.cognicare.dementiaguard.live"
@@ -97,7 +97,7 @@ ingress:
           pathType: Prefix
           backend:
             service:
-              name: argocd-server
+              name: argocd-server.argocd.svc.cluster.local
               port:
                 number: 80
 
