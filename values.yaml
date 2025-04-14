@@ -85,6 +85,8 @@ argocdIngress:
   className: nginx
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"  # Important for ArgoCD
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   tls:
     - hosts:
         - argocd.cognicare.dementiaguard.live
