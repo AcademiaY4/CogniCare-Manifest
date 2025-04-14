@@ -24,29 +24,6 @@
 #               name: cognicare-gateway-service
 #               port:
 #                 number: 8349
-    
-#     - host: grafana.cognicare.dementiaguard.live
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: grafana
-#                 port:
-#                   number: 80
-    
-#     - host: argocd.cognicare.dementiaguard.live
-#       paths:
-#         - path: /
-#           pathType: Prefix
-#           backend:
-#             service:
-#               name: argocd-server
-#               port:
-#                 number: 80
-
-
 
 # managedCertificate:
 #   enabled: false  # Set to true to create the ManagedCertificate
@@ -54,19 +31,17 @@
 #   domain: cognicare.dementiaguard.live
 
 
-ingress:
+cognicareIngress:
   enabled: true
   className: nginx
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
   tls:
     - hosts:
-        - "cognicare.dementiaguard.live"
-        - "grafana.cognicare.dementiaguard.live"
-        - "argocd.cognicare.dementiaguard.live"
+        - cognicare.dementiaguard.live
       # secretName: cognicare-cert
   hosts:
-    - host: "cognicare.dementiaguard.live"
+    - host: cognicare.dementiaguard.live
       paths:
         - path: /
           pathType: Prefix
@@ -82,26 +57,45 @@ ingress:
               name: cognicare-gateway-service
               port:
                 number: 8349
-    - host: "grafana.cognicare.dementiaguard.live"
+
+# Grafana namespace configuration
+grafanaIngress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  tls:
+    - hosts:
+        - grafana.cognicare.dementiaguard.live
+      # secretName: grafana-cert
+  hosts:
+    - host: grafana.cognicare.dementiaguard.live
       paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: grafana.monitoring.svc.cluster.local
-              port:
-                number: 80
-    - host: "argocd.cognicare.dementiaguard.live"
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: argocd-server.argocd.svc.cluster.local
+              name: grafana
               port:
                 number: 80
 
-managedCertificate:
-  enabled: false  # Set to true to create the ManagedCertificate
-  namespace: cognicare  # Namespace where the ManagedCertificate will be created
-  domain: cognicare.dementiaguard.live
+# ArgoCD namespace configuration
+argocdIngress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  tls:
+    - hosts:
+        - argocd.cognicare.dementiaguard.live
+      # secretName: argocd-cert
+  hosts:
+    - host: argocd.cognicare.dementiaguard.live
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: argocd-server
+              port:
+                number: 80

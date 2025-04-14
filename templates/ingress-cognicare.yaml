@@ -1,0 +1,42 @@
+{{- if .Values.cognicareIngress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "cognicare-manifest.fullname" . }}-cognicare
+  namespace: cognicare
+  labels:
+    {{- include "cognicare-manifest.labels" . | nindent 4 }}
+  {{- with .Values.cognicareIngress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- with .Values.cognicareIngress.className }}
+  ingressClassName: {{ . }}
+  {{- end }}
+  {{- if .Values.cognicareIngress.tls }}
+  tls:
+    {{- range .Values.cognicareIngress.tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
+  rules:
+    {{- range .Values.cognicareIngress.hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          {{- range .paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
+            backend:
+              service:
+                name: {{ .backend.service.name }}
+                port:
+                  number: {{ .backend.service.port.number }}
+          {{- end }}
+    {{- end }}
+{{- end }}
