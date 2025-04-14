@@ -1,34 +1,34 @@
-# ingress:
-#   enabled: true
-#   className: nginx 
-#   annotations:
-#     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-#   tls:
-#     - hosts:
-#         - "cognicare.dementiaguard.live"
-#       # secretName: cognicare-cert
-#   hosts:
-#     - host: "cognicare.dementiaguard.live"
-#       paths:
-#         - path: /
-#           pathType: Prefix
-#           backend:
-#             service:
-#               name: cognicare-admin-frontend-service
-#               port:
-#                 number: 6757
-#         - path: /gateway/
-#           pathType: Prefix
-#           backend:
-#             service:
-#               name: cognicare-gateway-service
-#               port:
-#                 number: 8349
+ingress:
+  enabled: false
+  className: nginx 
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  tls:
+    - hosts:
+        - "cognicare.dementiaguard.live"
+      # secretName: cognicare-cert
+  hosts:
+    - host: "cognicare.dementiaguard.live"
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: cognicare-admin-frontend-service
+              port:
+                number: 6757
+        - path: /gateway/
+          pathType: Prefix
+          backend:
+            service:
+              name: cognicare-gateway-service
+              port:
+                number: 8349
 
-# managedCertificate:
-#   enabled: false  # Set to true to create the ManagedCertificate
-#   namespace: cognicare  # Namespace where the ManagedCertificate will be created
-#   domain: cognicare.dementiaguard.live
+managedCertificate:
+  enabled: false  # Set to true to create the ManagedCertificate
+  namespace: cognicare  # Namespace where the ManagedCertificate will be created
+  domain: cognicare.dementiaguard.live
 
 
 cognicareIngress:
@@ -99,8 +99,3 @@ argocdIngress:
               name: argocd-server
               port:
                 number: 80
-
-managedCertificate:
-  enabled: false  # Set to true to create the ManagedCertificate
-  namespace: cognicare  # Namespace where the ManagedCertificate will be created
-  domain: cognicare.dementiaguard.live
