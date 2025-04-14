@@ -25,12 +25,6 @@ ingress:
               port:
                 number: 8349
 
-managedCertificate:
-  enabled: false  # Set to true to create the ManagedCertificate
-  namespace: cognicare  # Namespace where the ManagedCertificate will be created
-  domain: cognicare.dementiaguard.live
-
-
 cognicareIngress:
   enabled: true
   className: nginx
@@ -101,3 +95,16 @@ argocdIngress:
               name: argocd-server
               port:
                 number: 80
+
+managedCertificates:
+  enabled: true
+  certs:
+    - name: cognicare-cert
+      namespace: cognicare
+      domain: cognicare.dementiaguard.live
+    - name: grafana-cert
+      namespace: monitoring
+      domain: grafana.cognicare.dementiaguard.live
+    - name: argocd-cert
+      namespace: argocd
+      domain: argocd.cognicare.dementiaguard.live
