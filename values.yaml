@@ -14,14 +14,14 @@ ingress:
           pathType: Prefix
           backend:
             service:
-              name: cognicare-manifest-admin-frontend-service
+              name: cognicare-admin-frontend-service
               port:
                 number: 6757
         - path: /gateway/
           pathType: Prefix
           backend:
             service:
-              name: cognicare-manifest-gateway-service
+              name: cognicare-gateway-service
               port:
                 number: 8349
 
