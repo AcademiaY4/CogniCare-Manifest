@@ -23,8 +23,8 @@ gateway:
     - name: GATEWAY_PORT
       value: "8349"
     - name: MRI_SERVICE_ROUTE
-      value: "http://cognicare-manifest-mri-service.cognicare.svc.cluster.local:8000"
+      value: "http://cognicare-mri-service.cognicare.svc.cluster.local:8000"
     - name: TREATMENT_PLAN_SERVICE_ROUTE
-      value: "http://cognicare-manifest-treatment-planning-service.cognicare.svc.cluster.local:8000"
+      value: "http://cognicare-treatment-planning-service.cognicare.svc.cluster.local:8000"
     - name: PROGRESSION_TRACKING_SERVICE_ROUTE
-      value: "http://cognicare-manifest-progress-tracking-service.cognicare.svc.cluster.local:8000"
+      value: "http://cognicare-progress-tracking-service.cognicare.svc.cluster.local:8000"
