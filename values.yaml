@@ -71,7 +71,7 @@ grafanaIngress:
   hosts:
     - host: grafana.cognicare.dementiaguard.live
       paths:
-        - path: /
+        - path: /app/grafana/
           pathType: Prefix
           backend:
             service:
@@ -92,7 +92,7 @@ argocdIngress:
   hosts:
     - host: argocd.cognicare.dementiaguard.live
       paths:
-        - path: /
+        - path: /app/argocd/
           pathType: Prefix
           backend:
             service:
