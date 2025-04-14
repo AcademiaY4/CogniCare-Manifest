@@ -1,0 +1,10 @@
+{{- if .Values.managedCertificate.enabled -}}
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: cognicare-cert
+  namespace: {{ .Values.managedCertificate.namespace }}  # Use the namespace from values.yaml
+spec:
+  domains:
+    - {{ .Values.managedCertificate.domain | quote }}  # Use the domain from values.yaml
+{{- end }}

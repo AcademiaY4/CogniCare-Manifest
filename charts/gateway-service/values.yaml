@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: asia-southeast1-docker.pkg.dev/ctse-micro/gateway-service/gateway-service
+  tag: 5ae44e3c970948003cdbafad39d762805ed76974
+  pullPolicy: Always
+
+service:
+  type: NodePort
+  port: 8349
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: false
+
+autoscaling:
+  enabled: false
+
+gateway:
+  env:
+    - name: GATEWAY_PORT
+      value: "8349"
+    - name: MRI_SERVICE_ROUTE
+      value: "http://cognicare-manifest-mri-service.cognicare.svc.cluster.local:8000"
+    - name: TREATMENT_PLAN_SERVICE_ROUTE
+      value: "http://cognicare-manifest-treatment-planning-service.cognicare.svc.cluster.local:8000"
+    - name: PROGRESSION_TRACKING_SERVICE_ROUTE
+      value: "http://cognicare-manifest-progress-tracking-service.cognicare.svc.cluster.local:8000"

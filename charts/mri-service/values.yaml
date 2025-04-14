@@ -1,0 +1,19 @@
+replicaCount: 1
+
+image:
+  repository: asia-southeast1-docker.pkg.dev/ctse-micro/mri-service/mri-service
+  tag: e5398a12b7f26fd79c3ec74d50fb781db137b2d0
+  pullPolicy: Always
+
+service:
+  type: NodePort
+  port: 8000
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: false
+
+autoscaling:
+  enabled: false

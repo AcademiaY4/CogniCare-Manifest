@@ -1,0 +1,31 @@
+ingress:
+  enabled: true
+  className: nginx 
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  tls:
+    - hosts:
+        - "cognicare.dementiaguard.live"
+      # secretName: cognicare-cert
+  hosts:
+    - host: "cognicare.dementiaguard.live"
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: cognicare-manifest-admin-frontend-service
+              port:
+                number: 6757
+        - path: /gateway/
+          pathType: Prefix
+          backend:
+            service:
+              name: cognicare-manifest-gateway-service
+              port:
+                number: 8349
+
+managedCertificate:
+  enabled: false  # Set to true to create the ManagedCertificate
+  namespace: cognicare  # Namespace where the ManagedCertificate will be created
+  domain: cognicare.dementiaguard.live

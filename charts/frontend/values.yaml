@@ -1,0 +1,52 @@
+replicaCount: 1
+
+image:
+  repository: asia-southeast1-docker.pkg.dev/ctse-micro/admin-portal-service/admin-portal-service
+  tag: 25da281685adca470e37b6fdc70ab7407d2a6c36
+  pullPolicy: Always
+
+service:
+  type: NodePort
+  port: 6757
+
+serviceAccount:
+  create: false
+
+ingress:
+  enabled: false
+
+autoscaling:
+  enabled: false
+
+frontend:
+  env:
+    - name: VITE_FIREBASE_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: frontend-secrets
+          key: VITE_FIREBASE_API_KEY
+    - name: VITE_FIREBASE_AUTH_DOMAIN
+      valueFrom:
+        secretKeyRef:
+          name: frontend-secrets
+          key: VITE_FIREBASE_AUTH_DOMAIN
+    - name: VITE_FIREBASE_PROJECT_ID
+      valueFrom:
+        secretKeyRef:
+          name: frontend-secrets
+          key: VITE_FIREBASE_PROJECT_ID
+    - name: VITE_FIREBASE_STORAGE_BUCKET
+      valueFrom:
+        secretKeyRef:
+          name: frontend-secrets
+          key: VITE_FIREBASE_STORAGE_BUCKET
+    - name: VITE_FIREBASE_MESSAGING_SENDER_ID
+      valueFrom:
+        secretKeyRef:
+          name: frontend-secrets
+          key: VITE_FIREBASE_MESSAGING_SENDER_ID
+    - name: VITE_FIREBASE_APP_ID
+      valueFrom:
+        secretKeyRef:
+          name: frontend-secrets
+          key: VITE_FIREBASE_APP_ID

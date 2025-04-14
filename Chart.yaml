@@ -1,0 +1,23 @@
+apiVersion: v2
+name: cognicare-manifest
+description: A Helm chart for CogniCare application
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+
+dependencies:
+  - name: admin-frontend-service
+    version: 0.1.0
+    repository: "file://charts/frontend"
+  - name: gateway-service
+    version: 0.1.0
+    repository: "file://charts/gateway-service"
+  - name: mri-service
+    version: 0.1.0
+    repository: "file://charts/mri-service"
+  - name: progress-tracking-service
+    version: 0.1.0
+    repository: "file://charts/progress-tracking-service"
+  - name: treatment-planning-service
+    version: 0.1.0
+    repository: "file://charts/treatment-planning-service"
