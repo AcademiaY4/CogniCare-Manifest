@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: asia-southeast1-docker.pkg.dev/ctse-micro/progress-tracking-service/progress-tracking-service
-  tag: e5398a12b7f26fd79c3ec74d50fb781db137b2d0
+  tag: a296ba1defb3081080ee05f67a97ac899789461e
   pullPolicy: Always
 
 service:
