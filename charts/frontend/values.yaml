@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: asia-southeast1-docker.pkg.dev/ctse-micro/admin-portal-service/admin-portal-service
-  tag: abb341f9879eac5200f7ae4a7f7e054600ce9c36
+  tag: f78baddbbe386e30be4c365c92551be6bc475f1a
   pullPolicy: Always
 
 service:
